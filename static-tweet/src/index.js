@@ -6,13 +6,13 @@ function Tweet() {
     return (
         <div className="tweet"> <Avatar/>
             <div className="content">
-                <Author/>
+                <Author/><Time />
                 <Message/>
                 <div className="buttons">
-                    <ReplyButton/>
-                    <RetweetButton/>
-                    <LikeButton/>
-                    <MoreOptionsButton/>
+                    <ReplyButton />
+                    <RetweetButton />
+                    <LikeButton />
+                    <MoreOptionsButton />
                 </div>
             </div>
         </div>
