@@ -1,9 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-function Child({ onAction }) { return (
-  <button onClick={onAction}> Click Me!
-  </button>
+function Child({ onAction, reset }) { return (
+  <div>
+    <button onClick={onAction}> Click Me!</button>
+    <button onClick={reset}> Reset Counter</button>
+  </div>
   ); }
 
 class CountingParent extends React.Component {
@@ -15,6 +17,7 @@ class CountingParent extends React.Component {
       actionCount: 0
     };
     this.handleAction = this.handleAction.bind(this)
+    this.reset = this.reset.bind(this)
   }
 
   handleAction(action) {
@@ -23,11 +26,17 @@ class CountingParent extends React.Component {
       actionCount: this.state.actionCount + 1
     });
   }
+  reset(action) {
+    console.log('reseted', action)
+    this.setState({
+      actionCount: 0
+    })
+  }
 
   render() {
     return(
       <div>
-        <Child onAction={this.handleAction}/>
+        <Child onAction={this.handleAction} reset={this.reset}/>
         <p>Clicked {this.state.actionCount} times</p>
       </div>
     )
