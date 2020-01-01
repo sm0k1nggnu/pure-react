@@ -34,6 +34,14 @@ class CountingParent extends React.Component {
   }
 }
 
-ReactDOM.render(<CountingParent/>, document.querySelector('#root'));
+const Page = () => (
+  <div>
+    <CountingParent/>
+    <CountingParent/>
+    <CountingParent/>
+  </div>
+)
+
+ReactDOM.render(<Page/>, document.querySelector('#root'));
 
 // export { FileList, testFiles };  // for testing
