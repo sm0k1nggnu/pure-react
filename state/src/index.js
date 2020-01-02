@@ -10,17 +10,11 @@ function Child({ onAction, reset }) { return (
 
 class CountingParent extends React.Component {
   // constructor called when component created
-  constructor(props) {
-    super(props)
-    //set state
-    this.state = {
+  state = {
       actionCount: 0
-    };
-    this.handleAction = this.handleAction.bind(this)
-    this.reset = this.reset.bind(this)
   }
 
-  handleAction(action) {
+  handleAction = (action) => { //arrow function so no bind necessary
     console.log('Child says', action)
     this.setState({
       actionCount: this.state.actionCount + 1
