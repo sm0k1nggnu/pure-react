@@ -9,24 +9,32 @@ function onOff(value) {
 
 class House extends React.Component {
   state = {
-    kitchen: true,
-    bathroom: false,
-    livingroom: true,
-    bedroom: false
+    rooms: {
+      kitchen: true,
+      bathroom: false,
+      livingroom: true,
+      bedroom: false
+    }
   }
 
   toggle = (room) => {
     this.setState(prevState => ({
-    [room]: !prevState[room]
+      rooms: {
+        ...prevState.rooms,
+        [room]: !prevState.rooms[room]
+      }
+
     }))
   }
 
   lightsOut = () => {
     this.setState({
-      kitchen: false,
-      bathroom: false,
-      livingroom: false,
-      bedroom: false
+      rooms: {
+        kitchen: false,
+        bathroom: false,
+        livingroom: false,
+        bedroom: false
+      }
     })
   }
 
@@ -36,7 +44,7 @@ class House extends React.Component {
       bathroom,
       livingroom,
       bedroom
-    } = this.state;
+    } = this.state.rooms;
     return(
       <div>
         Kitchen lights: {onOff(kitchen)}
