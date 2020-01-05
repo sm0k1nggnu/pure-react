@@ -17,7 +17,10 @@ class Reddit extends React.Component {
           obj => obj.data
         );
         this.setState({ posts });
-      });
+      })
+      .catch(error => {
+        console.log(error)
+      })
   }
 
   render() {
@@ -38,6 +41,6 @@ class Reddit extends React.Component {
 }
 
 ReactDOM.render(
-  <Reddit subreddit="reactjs"/>,
+  <Reddit subreddit="reactjsabc"/>,
   document.querySelector('#root')
 );
