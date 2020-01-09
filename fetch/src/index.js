@@ -4,10 +4,12 @@ import axios from 'axios';
 
 class Reddit extends React.Component {
   state = {
-    posts: []
+    posts: [],
+    isLoading: false
   };
 
   componentDidMount() {
+    this.setState({ isLoading: true })
     axios
       .get(
         `https://www.reddit.com/r/${this.props.subreddit}.json`
@@ -18,29 +20,34 @@ class Reddit extends React.Component {
         );
         this.setState({ posts });
       })
+      .finally(() =>
+        this.setState({ isLoading: false })
+      )
       .catch(error => {
         console.log(error)
       })
   }
 
   render() {
-    const { posts } = this.state;
+    const { posts, isLoading } = this.state;
     return (
-      <div>
-        <h1>{this.props.subreddit}</h1>
-        <ul>
-          { posts.map(
-            post => (
+<div>
+        <h1>{`/r/${this.props.subreddit}`}</h1>
+        {isLoading ? (
+          <div>Loading...</div>
+        ) : (
+          <ul>
+            {posts.map(post => (
               <li key={post.id}>{post.title}</li>
-            )
-          ) }
-        </ul>
+            ))}
+          </ul>
+        )}
       </div>
     )
   }
 }
 
 ReactDOM.render(
-  <Reddit subreddit="reactjsabc"/>,
+  <Reddit subreddit="reactjs"/>,
   document.querySelector('#root')
 );
