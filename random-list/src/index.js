@@ -1,22 +1,32 @@
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 
-function StepTracker() {
-  const [steps, setSteps] = useState(0)
+function RandomList() {
+  const [items, setItems] = useState([]);
 
-  function increment() {
-    setSteps(steps => steps + 1)
-  }
+  const addItem = () => {
+    setItems([
+      ...items,
+      {
+        id: items.length,
+        value: Math.random() * 100
+      }
+    ]);
+  };
 
   return (
-    <div>
-      Today you have taken { steps } steps
-      <button onClick={increment}>A Step</button>
-    </div>
-  )
-}
+    <>
+      <button onClick={addItem}>add random number</button>
+      <ul>
+        {items.map(item => (
+          <li key={item.id}>{item.value}</li>
+        ))}
+      </ul>
+    </>
+        )
+      }
 
-ReactDOM.render(
-  <StepTracker />,
-  document.querySelector('#root')
+      ReactDOM.render(
+  <RandomList />,
+        document.querySelector('#root')
 )
