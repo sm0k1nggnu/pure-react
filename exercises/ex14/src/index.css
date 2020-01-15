@@ -1,0 +1,62 @@
+html,
+body,
+#root,
+.room {
+  height: 33%;
+  margin: 0;
+  text-align: center;
+  font-family: 'Georgia', serif;
+  font-size: 20px;
+}
+
+.room {
+  padding: 30px;
+}
+
+.lit {
+  background-color: white;
+  color: black;
+}
+
+.dark {
+  background-color: black;
+  color: white;
+}
+
+.audio-controls {
+  margin-bottom: 3em;
+}
+
+.control {
+  display: flex;
+  max-width: 200px;
+  margin-bottom: 20px;
+}
+
+.control>div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+}
+
+.control .value {
+  font-size: 2em;
+  margin-bottom: 3px;
+}
+
+.control .label {
+  font-size: 0.9em;
+  opacity: 0.7;
+}
+
+.control button {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  border: 2px solid #ccc;
+  font-size: 20px;
+}
