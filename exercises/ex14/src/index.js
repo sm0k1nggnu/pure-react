@@ -42,17 +42,63 @@ const RandomList = () => {
 }
 
 //ex 14.3
-const AudioControls = () => {
-  const [volume, setVolume] = useState(0)
-  const [bass, setBass] = useState(0)
-  const [mid, setMid] = useState(0)
-  const [treble, setTreble] = useState(0)
-  return (
+const Control = ({
+  value,
+  Children,
+  onIncrease,
+  onDecrease
+}) => (
+  <div className="control">
+    <button onClick={onDecrease}>-</button>
     <div>
-      <div>{volume}<br />Volume</div>
-      <div>{treble}<br />Treble</div>
-      <div>{mid}<br />Mid</div>
-      <div>{bass}<br />Bass</div>
+      <span>{value}</span>
+      <span>{Children}</span>
+    </div>
+    <button onClick={onIncrease}>+</button>
+  </div>
+)
+
+
+
+const AudioControls = () => {
+  const [volume, setVolume] = useState(28)
+  const [bass, setBass] = useState(84)
+  const [mid, setMid] = useState(23)
+  const [treble, setTreble] = useState(7)
+
+  // const changeVolume = (direction) => {
+  //   setVolume(volume = volume direction === 'up' ? + : -} 1)
+
+  return (
+    <div className="audio-controls">
+      <Control
+        value={volume}
+        onIncrease={() => setVolume(volume+1) }
+        onDecrease={() => setVolume(volume- 1)}
+      >
+        Volume
+      </Control>
+      <Control
+        value={treble}
+        onIncrease={() => setTreble(treble + 1)}
+        onDecrease={() => setTreble(treble - 1)}
+      >
+        Treble
+      </Control>
+      <Control
+        value={bass}
+        onIncrease={() => setBass(bass + 1)}
+        onDecrease={() => setBass(bass - 1)}
+      >
+        Volume
+      </Control>
+      <Control
+        value={mid}
+        onIncrease={() => setMid(mid + 1)}
+        onDecrease={() => setMid(mid - 1)}
+      >
+        Volume
+      </Control>
     </div>
   )
 }
