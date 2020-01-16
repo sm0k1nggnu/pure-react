@@ -103,6 +103,53 @@ const AudioControls = () => {
   )
 }
 
+const AudioControlsWithOneObject = () => {
+  const [{volume, bass, treble, mid}, setValues] = useState({
+    volume: 12,
+    bass: 13,
+    treble: 84,
+    mid: 39
+  });
+
+  const increase = key => () => {
+    setValues(values => ({
+      ...values,
+      [key]: values[key] + 1
+    }));
+  }
+
+  const decrease = key => () => {
+    setValues(values => ({
+      ...values,
+      [key]: values[key] - 1
+    }));
+  }
+  return (
+    <div className="audio-controls">
+      <Control
+        value={volume}
+        onIncrease={increase('volume')}
+        onDecrease={decrease('volume')}
+      >Volume</Control>
+      <Control
+        value={bass}
+        onIncrease={increase('bass')}
+        onDecrease={decrease('bass')}
+      >bass</Control>
+      <Control
+        value={treble}
+        onIncrease={increase('treble')}
+        onDecrease={decrease('treble')}
+      >treble</Control>
+      <Control
+        value={mid}
+        onIncrease={increase('mid')}
+        onDecrease={decrease('mid')}
+      >mid</Control>
+    </div>
+  )
+}
+
 
 
 ReactDOM.render(
@@ -110,6 +157,7 @@ ReactDOM.render(
   <Room />
   <RandomList />
   <AudioControls />
+  <AudioControlsWithOneObject />
   </>,
   document.querySelector('#root')
 )
