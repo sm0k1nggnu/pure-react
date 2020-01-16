@@ -150,6 +150,27 @@ const AudioControlsWithOneObject = () => {
   )
 }
 
+//16
+
+const InputExample = () => {
+  const [text, setText] = useState('');
+
+  const changeHandler = event => {
+    setText(event.target.value);
+  }
+
+  return (
+    <div>
+    <input
+      type="text"
+      value={text}
+      onChange={changeHandler}
+    />
+    {text}
+    </div>
+  )
+}
+
 
 
 ReactDOM.render(
@@ -158,6 +179,7 @@ ReactDOM.render(
   <RandomList />
   <AudioControls />
   <AudioControlsWithOneObject />
+  <InputExample />
   </>,
   document.querySelector('#root')
 )
