@@ -156,7 +156,8 @@ const InputExample = () => {
   const [text, setText] = useState('');
 
   const changeHandler = event => {
-    setText(event.target.value);
+    let text = event.target.value;
+    setText(text.replace(/[0-9]/g, ''));
   }
 
   return (
